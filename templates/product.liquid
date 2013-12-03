@@ -1,0 +1,117 @@
+<div id="product">
+	{% if settings.title_position == "above_images" %}
+		<h1 class="side-pad">{{ product.title }}</h1>
+	{% endif %}
+	{% if product.images.size > 1 %}
+	<section class="slider">
+		<div id="slider" class="product-flexslider">
+			<ul class="slides">
+				{% for image in product.images %}
+				<li{% cycle '', '', '', ' class="omega"'%}>
+					<img src="{{ image | product_img_url: 'large'}}" alt="{{ image.alt | escape }}" />
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div id="carousel" class="product-flexslider">
+			<ul class="slides">
+				{% for image in product.images %}
+				<li{% cycle '', '', '', ' class="omega"'%}>
+					<img src="{{ image | product_img_url: 'compact'}}" alt="{{ image.alt | escape }}" />
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</section>
+	{% else %}
+	<section class="single-img btm-margin center">
+		<img src="{{ product.images[0] | product_img_url: 'large'}}" alt="{{ image.alt | escape }}" />
+	</section>
+	{% endif %}
+
+	<div class="details{% unless collection %} no-border{% endunless %} side-pad btm-margin">
+			{% if settings.title_position == "below_images" %}
+			<h1>{{ product.title }}</h1>
+			{% endif %}
+			{% if settings.description_position == "above_add_to_cart" %}
+			<div class="description">
+			{{ product.description }}
+			</div>
+			{% endif %}
+			{% if product.available %}
+			<form action="/cart/add" method="post" class="variants" id="product-actions" enctype="multipart/form-data">
+				<div class="options clearfix">  
+
+					<div class="variants-wrapper clearfix {% if product.variants.size == 1 %}hidden{% endif %}"> 
+						<select id="product-select" name="id">
+							{% for variant in product.variants %}
+							<option value="{{ variant.id }}">{{ variant.title | escape }} - {{ variant.price | money }}</option>
+							{% endfor %}
+						</select>
+					</div>            
+
+					<div id="purchase" class="hidePrice">
+						<p class="price"></p>                               
+						<input class="btn" type="submit" name="add" id="add-to-cart" value="{{ settings.tr_add_to_cart }}" /> 
+						<span id="cart-updated"></span>
+					</div>
+
+				</div><!-- /.options -->
+			</form>
+
+			{% else %}
+			<div id="product-actions" class="sold-out">
+				<div id="purchase">
+					<p class="alert alert-info margin-top">{{ settings.tr_sold_out }}</p>
+				</div>
+			</div>
+			{% endif %}
+			{% if settings.description_position == "below_add_to_cart" %}
+			<div class="description">
+			{{ product.description }}
+			</div>
+			{% endif %}
+			
+		</div>
+
+		<aside class="more-info side-pad">
+			<dl>
+			{% if settings.display_product_type %}
+				<dt class="detail">{{ settings.tr_type }}:</dt> 
+				<dd><a href="/collections/types?q={{ product.type }}">{{ product.type }}</a></dd>
+			{% endif %}
+			{% if settings.display_product_vendor %}
+				<dt class="detail">{{ settings.tr_vendor }}:</dt> 
+				<dd>{{ product.vendor | link_to_vendor }}</dd>
+			{% endif %}
+			{% if settings.display_product_tags %}
+				<dt class="detail">{{ settings.tr_tags }}:</dt> 
+				<dd>{% for tag in product.tags %}<a href="/collections/all/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}</dd>
+			{% endif %}
+			</dl>
+		</aside>
+	{% if settings.include_social_sharing %}
+	{% include 'social' %}
+	{% endif %}
+	{% if collection %}     
+	<div class="page-links full-margin clearfix top-border">       
+      {% if collection.previous_product %}
+      <a href="{{ collection.previous_product }}" class="prev pull-left">« Previous Product</a>
+      {% endif %}
+      {% if collection.next_product %}
+      <a href="{{ collection.next_product }}" class="next pull-right">Next Product »</a>
+      {% endif %}
+    </div>
+   {% endif %}
+
+	{% if collection and settings.show_more_from_collection %}
+	<div class="products">
+		<h3 class="title top-border side-pad"><a href="{{ collection.url }}">{{ settings.tr_more_from_collection }}</a></h3>
+		{% for product in collection.products limit:4 %}
+		{% include 'product-loop' %}
+		{% endfor %}
+	</div>
+	{% endif %}
+
+</div> <!-- /#product -->
+

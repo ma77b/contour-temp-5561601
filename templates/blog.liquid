@@ -1,0 +1,27 @@
+<div id="blog" class="clearfix side-pad">
+
+  <h1>{{ blog.title }}</h1>
+
+  {% paginate blog.articles by settings.pagination_limit %}
+  <div class="articles">
+    {% for article in blog.articles %}
+    <article class="summary-wrap top-border">
+        <hgroup>
+            <h3><a href="{{ article.url }}" class="full clearfix">{{ article.title }}</a>
+             <small class="date">{{ article.published_at | date: "%A, %d %B, %Y" }}</small></h3>
+        </hgroup>
+        <div class="summary">  
+        {% if article.excerpt.size > 0 %}
+        	{{ article.excerpt }}
+        {% else %}
+        	<p>{{ article.content | strip_html | truncatewords: 50 }}</p>
+        {% endif %}    
+    </article> <!-- /.article -->
+    {% endfor %}
+  </div> <!-- /.articles -->
+
+  {% include 'pagination' %}
+
+  {% endpaginate %}
+
+</div> <!-- /#blog -->

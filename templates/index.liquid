@@ -1,0 +1,82 @@
+<div id="index" class="clearfix">
+    {% if settings.show_slideshow %}
+	<section class="slider">
+		<div id="slider" class="flexslider">
+			<ul class="slides">
+			{% for i in (1..5) %}
+                {% assign show_image = 'show_image_' | append: i %}
+                {% capture slideshow %}{{ 'slideshow_' | append: i | append: '.jpg' }}{% endcapture %}    
+                {% assign image_link = 'image_' | append: i | append: '_link' %}
+                {% assign image_desc = 'image_' | append: i | append: '_desc' %}
+                {% if settings.[show_image] %}       
+                <li>
+                <a href="{{ settings.[image_link] }}">
+                    <img src="{{ slideshow | asset_url }}" alt="{{ settings.[image_desc] }}">
+                </a>
+                {% if settings.[image_desc] != '' %}
+                   <p class="flex-caption">{{ settings.[image_desc] }}</p>
+                {% endif %}
+                </li>
+                {% endif %}
+            {% endfor %}  
+			</ul>
+		</div>
+	</section>
+	{% endif %}
+	{% unless pages[settings.frontpage_intro].content == "" %}
+	<article id="intro" class="side-pad">
+		<h1>{{ pages[settings.frontpage_intro].title }}</h1>
+		{{ pages[settings.frontpage_intro].content }}
+	</article>
+	{% endunless %}
+	{% if settings.featured_links != "None" and settings.featured_links != "" %}
+  <h2>{{ settings.featured_links_title }}</h2>
+	<ul id="featured-links" class="nav side-pad">
+		{% for link in linklists[settings.featured_links].links %}
+		<li{% if forloop.first %} class="first"{% endif %}>
+			{% capture child_list_handle %}{{ link.title | handle }}{% endcapture %}	
+			{% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}<h3><a href="#{{ link.handle }}" class="accordion-toggle" data-toggle="collapse" data-parent="#featured-links">{{ link.title }}<span class="icon-caret-down"></span></a></h3>{% else %}
+			<h3><a href="{{ link.url }}">{{ link.title }}</a></h3>{% endif %}
+				{% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}
+				<ul id="{{ link.handle }}" class="collapse">
+					{% for l in linklists[child_list_handle].links %}
+					<li><h4><a href="{{ l.url }}">{{ l.title }}</a></h4></li>
+					{% endfor %}
+				</ul>
+				{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+	{% if settings.featured_collections != "None" and settings.featured_collections != "" %}
+	<div id="collections">
+	{% for link in linklists[settings.featured_collections].links %}
+	{% if link.type == 'collection_link' %}
+	<div class="col-thumb"> 
+	{% if settings.show_collection_titles %}
+		<h2><a href="{{ link.url }}" title="Browse our {{ link.title | escape }} collection">{{ link.title }}</a></h2> 
+	{% endif %}
+			<a href="{{ link.url }}" title="Browse our {{ link.title | escape }} collection">
+				{% if link.object.image %}
+				<img src="{{ link.object.image.src | collection_img_url: 'grande' }}" alt="{{ link.object.image.alt }}" width="100%" />
+				{% else %}
+				<div class="no-image well"><h3><span class="icon-picture"></span><br>You need to upload an image to the {{ link.title }} collection</h3></div>
+				{% endif %}
+			</a>
+	</div>
+	{% endif %}
+	{% endfor %}
+	</div>
+	{% endif %}
+	{% unless settings.frontpage_collection == "" %}
+	<h2>{{ settings.tr_featured_products }}</h2> 
+	<div id="products" class="products clearfix">
+		{% for product in collections[settings.frontpage_collection].products | limit: 8 %}
+		{% include 'product-loop' %}
+		{% endfor %}
+		{% if collections[settings.frontpage_collection].products.size > 8 %}
+		<h4 class="side-pad btm-margin"><a href="{{ collections[settings.frontpage_collection].url }}">More from the {{ collections[settings.frontpage_collection].title }} collection...</a></h4>
+		{% endif %}
+	</div>
+	{% endunless %}
+</div>

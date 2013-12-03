@@ -1,0 +1,46 @@
+<div id="page" class="clearfix side-pad">
+  
+  <div class="content p">
+    <h1 class="title">{{ page.title }}</h1>
+    {{ page.content }}
+    
+    <div class="contact_form clearfix top-border">
+    {% form 'contact' %}
+
+    {% if form.posted_successfully? %}
+     <p class="alert alert-info">{{ settings.tr_contact_success }}</p>
+    {% endif %}
+
+    {% if form.errors %}
+    <div class="alert alert-info">
+    	<p>{{ settings.tr_contact_error }}</p>
+    	<p>
+    	{% for field in form.errors %}
+    		<strong>The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</strong>{% unless forloop.last %}<br>{% endunless %}
+    	{% endfor %}
+    	</p>
+    </div>
+    {% endif %}
+  
+  <p>
+    <label>Your Name:</label>
+    <input type="text" id="contactFormName" name="contact[name]" placeholder="John Doe" />
+  </p>
+  <p>
+    <label>Email:</label>
+    <input type="email" id="contactFormEmail" name="contact[email]" placeholder="john@example.com" />
+  </p>
+  <p>
+    <label>Phone Number:</label>
+    <input type="text" id="contactFormTelephone" name="contact[phone]" placeholder="555-555-1234" />
+  </p> 
+  <p>
+    <label>Message:</label>
+    <textarea rows="10" cols="50" id="contactFormMessage" name="contact[body]" placeholder="Your Message"></textarea>
+  </p>
+   <button type="submit" id="contactFormSubmit" class="submit btn">{{ settings.tr_contact_submit }}</button>
+   {% endform %}
+   </div>
+  </div>
+
+</div> <!-- /#page -->

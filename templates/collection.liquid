@@ -1,0 +1,81 @@
+
+<div id="collection" class="clearfix">
+{% paginate collection.products by settings.pagination_limit %}
+	<div class="side-pad btm-margin">
+		{% unless collection.handle == "all" %}
+		<h1 class="title">{{ collection.title }}{% if current_tags %} - {{ current_tags.first }}{% endif %}</h1>
+		<div class="description">{{ collection.description }}</div>
+		{% else %}
+		<h1 class="title">{{ settings.tr_all_products }}{% if current_tags %} - {{ current_tags.first }}{% endif %}</h1>
+		{% endunless %}
+	</div>
+{% if collection.products.size == 0 %}
+	<p class="alert alert-info side-margin">{{ settings.tr_no_products }}</p>
+{% else %}
+	{% if paginate.pages > 1 %}
+	<div class="side-pad btm-margin">
+	<p class="no-margin">{{ settings.tr_viewing }} {{ paginate.current_offset | plus: 1 }} - 
+		{% if paginate.next %}
+		{{ paginate.current_offset | plus: paginate.page_size }}
+		{% else %}
+		{{ paginate.items }}
+		{% endif %} 
+		of {{ paginate.items }}
+	</p>
+	</div>
+	{% endif %}
+
+	{% if collection.all_tags.size > 0 and settings.enable_tag_filter %}	
+	<div class="side-pad btm-margin">
+    <select class="tag-filter" name="tag-filter">
+      <option value="">All</option>
+      {% for tag in collection.all_tags %}
+      {% if current_tags contains tag %}
+      <option value="{{ tag | handleize }}" selected>{{ tag }}</option>
+      {% else %}
+      <option value="{{ tag | handleize }}">{{ tag }}</option>
+      {% endif %}
+      {% endfor %}
+    </select>
+    </div>
+    {% endif %}
+
+	<div id="products" class="products clearfix">
+		{% for product in collection.products %}
+		{% include 'product-loop' %}
+		{% endfor %}
+	</div>
+
+	{% include 'pagination' %}
+
+	
+{% endif %}
+{% endpaginate %}
+</div> <!-- /#collection -->
+
+<script type="text/javascript">
+  /* Product Tag Filters - Good for any number of filters on any type of collection pages */
+  /* Brought to you by Caroline Schnapp */
+  var collFilters = jQuery('.tag-filter');
+  collFilters.change(function() {
+    var newTags = [];
+    collFilters.each(function() { 
+      if (jQuery(this).val()) {
+        newTags.push(jQuery(this).val());
+      }
+    });
+    if (newTags.length) {
+      var query = newTags.join('+');
+      window.location.href = jQuery('{{ 'tag' | link_to_tag: 'tag' }}').attr('href').replace('tag', query);
+    } 
+    else {
+      {% if collection.handle %}
+      window.location.href = '/collections/{{ collection.handle }}';
+      {% elsif collection.products.first.type == collection.title %}
+      window.location.href = '{{ collection.title | url_for_type }}';
+      {% elsif collection.products.first.vendor == collection.title %}
+      window.location.href = '{{ collection.title | url_for_vendor }}';
+      {% endif %}
+    }
+  });
+</script>

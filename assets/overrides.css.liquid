@@ -1,0 +1,206 @@
+body {
+  color: {{ settings.body_text_color }};
+  font-size: {{ settings.standard_font_size }};  
+  {% if settings.standard_font contains "Google" %}
+      font-family: '{{ settings.standard_font | remove: 'Google|' }}';
+  {% else %}
+  	font-family: {{ settings.standard_font }};
+  {% endif %}
+   line-height: 150%;
+}
+@font-face{font-family:'FontAwesome';src:url({{ 'fontawesome-webfont.eot' | asset_url }});src:url({{ 'fontawesome-webfont.eot?#iefix' | asset_url }}) format('embedded-opentype'),url({{ 'fontawesome-webfont.woff' | asset_url }}) format('woff'),url({{ 'fontawesome-webfont.ttf' | asset_url }}) format('truetype'),url({{ 'fontawesome-webfont.svg#FontAwesome' | asset_url }}) format('svg');font-weight:normal;font-style:normal;}[class^="icon-"]:before,[class*=" icon-"]:before{font-family:FontAwesome;font-weight:normal;font-style:normal;display:inline-block;text-decoration:inherit;}
+.wrapper {
+    {% if settings.custom_background_image %}
+    background:  {{ settings.main_background_color }} url('{{ 'background_image.png' | asset_url }}') {% if settings.background_image_style == "repeat" %}repeat{% elsif settings.background_image_style == "no-repeat" %}no-repeat{% endif %} scroll; 
+    {% elsif settings.main_background_color != "" %}
+    background-color: {{ settings.main_background_color }};
+    {% else %}
+    background-color: #ffffff;
+    {% endif %}
+}
+.wrapper .body {
+	border-top: 1px {{ settings.line-style }} {{ settings.main_line }};
+}
+{% if settings.show_slideshow %}
+.wrapper .body.index {
+	border-top: none;
+}
+{% endif %}
+a:link,
+a:visited, #customer-accounts h1 a.icon {
+  color: {{ settings.body_link_color }};
+}
+h1, h2, h3, h4, h5, h6 {
+  {% if settings.heading_font_custom != "" %}
+  	font-family: '{{ settings.heading_font_custom }}';
+  {% elsif settings.heading_font contains "Google" %}
+  	font-family: '{{ settings.heading_font | remove: 'Google|' }}';
+  {% else %}
+  	font-family: {{ settings.heading_font }};
+  {% endif %}
+  font-weight: {{ settings.heading_font_weight }};
+  text-transform: {{ settings.heading_font_case }};
+}
+h1 {
+  font-size: {{ settings.heading_h1_font_size }};
+  line-height: {{ settings.heading_h1_line_height }};
+}
+h2 {
+  font-size: {{ settings.heading_h2_font_size }};
+  line-height: {{ settings.heading_h2_line_height }};
+}
+h3 {
+  font-size: {{ settings.heading_h3_font_size }};
+  line-height: {{ settings.heading_h3_line_height }};
+}
+h4 {
+  font-size: {{ settings.heading_h4_font_size }};
+  line-height: {{ settings.heading_h4_line_height }};
+}
+#index h2, #collections h2 {
+  border-top: 1px {{ settings.line-style }} {{ settings.main_line }};
+}
+
+
+.alert-info{
+	background-color:{{ settings.alert_info_background_color }};
+	border-color:{{ settings.main_line }};
+	color: {{ settings.alert_info_text_color }};
+}
+
+.header #logo {
+  {% if settings.site_title_font_custom != "" %}
+  	font-family: '{{ settings.site_title_font_custom }}';
+  {% elsif settings.site_title_font contains "Google" %}
+  	font-family: '{{ settings.site_title_font | remove: 'Google|' }}';
+  {% else %}
+  	font-family: {{ settings.site_title_font }};
+  {% endif %}
+  font-weight: {{ settings.site_title_font_weight }};
+  text-transform: {{ settings.site_title_font_case }};
+  font-size: {{ settings.site_title_font_size }};
+  color: {{ settings.logo_color }};
+  margin-top: {{ settings.logo_offset }};
+  line-height: 150%;
+}
+.header #logo, h1, h2, h3, h4 {
+    {% if settings.letterpress_headings %}
+    text-shadow: 0px 1px 1px #ffffff;
+    {% endif %}
+}
+#toolbar  {
+  background-color: {{ settings.toolbar_background_color }};
+}
+#toolbar .cart-total-items .badge{
+	background-color: {{ settings.toolbar_color }};
+	color: {{ settings.toolbar_background_color }};
+} 
+.flexslider {
+  {% if settings.slide_navigation == "show" %}margin-bottom: 40px;{% endif %}
+}
+.btn, a.btn:link, a.btn:visited, .btn:hover, a.btn:hover {
+  background-color: {{ settings.toolbar_button_background_color }};
+  color: {{ settings.toolbar_button_color }};
+}
+.btn.alternate, a.btn.alternate, .btn.alternate:hover, a.btn.alternate:hover {
+  background-color: {{ settings.toolbar_button_alternate_background_color }};
+  color: {{ settings.toolbar_button_alternate_color }};
+}
+#toolbar a.icon:link,
+#toolbar a.icon:visited {
+  color: {{ settings.toolbar_color }};
+}
+.pulldown,
+#secondary-menu ul {
+  background-color: {{ settings.nav_background_color }};
+}
+.pulldown li,
+#secondary-menu ul li, .header.navigation ul#top-nav li {
+  font-size: {{ settings.navigation_font_size }};
+}
+.pulldown li a,
+#secondary-menu ul li a, .header.navigation ul#top-nav li a {
+  font-weight: {{ settings.navigation_font_weight }};
+  text-transform: {{ settings.navigation_font_style }};
+  {% if settings.navigation_font_custom != "" %}
+  	font-family: '{{ settings.navigation_font_custom }}';
+  {% elsif settings.navigation_font contains "Google" %}
+  	font-family: '{{ settings.navigation_font | remove: 'Google|' }}';
+  {% else %}
+  	font-family: {{ settings.navigation_font }};
+  {% endif %}
+}
+.pulldown li a,
+#secondary-menu ul li a {
+  color: {{ settings.nav_text_color }};
+}
+.header.navigation ul#top-nav li a {
+  color: {{ settings.nav_horiz_text_color }};
+}
+.pulldown.in, .pulldown li a,
+#secondary-menu ul li a {
+  border-color: {{ settings.nav_line }};
+}
+.btm-border, .top-border, .table th, .table td {
+  border-color: {{ settings.main_line }};
+}
+.pulldown.in, .pulldown li a,
+#secondary-menu ul li a, .btm-border, .top-border {
+  border-style: {{ settings.line-style }};
+}
+.product .sale {
+  background-color: {{ settings.sale_color }};
+  color: {{ settings.sale_text_color }};
+}
+.well{
+  border-color: {{ settings.main_line }};
+  border-style: {{ settings.line-style }};
+  border-left: none;
+  border-right: none;
+  background-color:#f5f5f5;
+  -webkit-border-radius:0px;
+  -moz-border-radius:0px;
+  border-radius:0px;
+  -webkit-box-shadow:none;
+  -moz-box-shadow:none;
+  box-shadow:none;
+}
+.credit-cards li.cc{background:url({{ 'credit_cards.png' | asset_url }}) ;}
+footer {
+  background-color: {{ settings.footer_background_color }};
+}
+footer h2,
+footer h3,
+footer h4,
+footer p,
+footer label {
+  color: {{ settings.footer_text_color }};
+}
+footer a:link, footer a:visited, footer a.icon:link, footer a.icon:visited  {
+  color: {{ settings.footer_link_color }};
+}
+@media only screen and (min-width : 1280px) {
+  body.vertical {
+    background: url({{ 'Lucid_Design_Mobile_Shopify_themes.png' | asset_url }}) no-repeat center 20px;
+  }
+  .wrapper {
+    margin-top: 137px;
+    width: 320px;
+    height: 568px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin-bottom: 150px;
+  }
+  #toolbar {
+    position: relative;
+  }
+}
+@media all and (-webkit-min-device-pixel-ratio : 1.5) {
+  .credit-cards li.cc {
+    background-image: url({{ 'credit_cards_2x.png' | asset_url }});
+    background-size: 264px 21px;
+  }
+}

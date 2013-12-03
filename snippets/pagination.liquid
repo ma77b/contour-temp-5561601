@@ -1,0 +1,19 @@
+{% if paginate.pages > 1 %}
+<div class="pagination pagination-small clearfix side-pad center">
+  <ul>
+  {% if paginate.previous %}
+      <li>{{ '&laquo;' | link_to: paginate.previous.url }}</li>
+  {% endif %}
+  {% for part in paginate.parts %}
+    {% if part.is_link %}
+     <li>{{ part.title | link_to: part.url }}</li>
+    {% else %}
+     <li class="disabled"><span>{{ part.title }}</span></li>      
+    {% endif %}        
+  {% endfor %}      
+  {% if paginate.next %}
+    <li>{{ '&raquo;' | link_to: paginate.next.url }}</li>
+  {% endif %} 
+  </ul>
+</div>
+{% endif %}

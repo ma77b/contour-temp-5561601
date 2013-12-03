@@ -1,0 +1,48 @@
+{% layout settings.customer_layout %}
+<div id="customer-accounts" class="clearfix side-pad">
+     <h1 class="title">{{ settings.tr_account_details }}</h1>
+     
+   <div id="customer_detail" class="group">
+     <address>
+     	<strong>{{ customer.name }}</strong> <a href="/account/logout"><span class="icon icon-signout">&nbsp;</span>Logout</a>
+     </address>
+     <address>
+      {% if customer.default_address != nil %}{{ customer.default_address.address1 }}<br>
+        {% if customer.default_address.address2 != "" %}
+        	{{ customer.default_address.address2 }}<br>
+        {% endif %}
+        {{ customer.default_address.city}}, {% if address.province_code %}{{customer.default_address.province_code}}, {% endif %}{{customer.default_address.country}}<br>
+        {{ customer.default_address.zip}}<br>
+        <abbr title="Phone">P:</abbr> {{ customer.default_address.phone }}<br>
+        <abbr title="Email">E:</abbr> <a href="mailto:{{ customer.email }}">{{ customer.email }}</a>
+      {% endif %}
+     </address>
+    </div>
+
+
+    <div id="customer_orders">
+    {% if customer.orders.size != 0 %}
+    <h2 class="btm-border">{{ settings.tr_account_orders }}</h2>
+    <table class="table">
+    <thead>
+      <tr>
+        <th class="order_number">Order</th>
+        <th class="fulfillment_status">Status</th>
+        <th class="total">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in customer.orders %}
+      <tr class="{% cycle 'odd', 'even' %} {% if order.cancelled %}cancelled_order{% endif %}">
+        <td>{{ order.name | link_to: order.customer_url }}</td>
+        <td><span class="status_{{ order.fulfillment_status }}">{{ order.fulfillment_status }}</span></td>
+        <td><span class="total money">{{ order.total_price | money }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  	{% else %}
+    <p class="alert alert-info">{{ settings.tr_account_no_orders }}</p>
+  {% endif %}
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div id="product-social-media" class="side-pad clearfix">
+	<span class="social pinterestbtn">
+    	<a href="http://pinterest.com/pin/create/button/?url={{ shop.url }}{{ product.url }}&media={{ product.featured_image | product_img_url: 'compact' }}&description={{ product.title | escape }}" class="pin-it-button" target="_blank" count-layout="none"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
+    	<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+    </span>
+    <span class="social twitterbtn">
+    	<a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a>
+    	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </span>
+    <span class="social facebookbtn">
+    	<fb:like send="false" layout="button_count" width="100" height="25" show_faces="true"></fb:like>
+    </span>
+</div>

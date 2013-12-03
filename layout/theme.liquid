@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	{% if template == 'index' %}
+	<title>{{ shop.name }}</title>
+	{% elsif template == '404' %}
+	<title>Page Not Found | {{ shop.name }}</title>
+	{% else %}
+	<title>{{ page_title | escape }} | {{ shop.name }}</title>
+	{% endif %}
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="apple-touch-icon" href="{{ 'icon.png' | asset_url }}"/>
+	<link rel="canonical" href="{{ canonical_url }}" /> 
+
+	{% assign maxmeta = 155 %}
+	{% if template contains 'product' %}
+	<meta name="description" content="{{ product.description | strip_html | strip_newlines | truncate: maxmeta | escape }}" />
+	{% elsif template contains 'page' %}
+	<meta name="description" content="{{ page.content | strip_html | strip_newlines | truncate: maxmeta | escape }}" />
+	{% elsif template == 'index' and shop.description != '' %}
+	<meta name="description" content="{{ shop.description | strip_html | strip_newlines | truncate: maxmeta | escape}}" />
+	{% endif %}
+
+	{{ content_for_header }}
+	
+	<!--[if lt IE 9]>
+  <script src="dist/html5shiv.js"></script>
+  <![endif]-->
+	
+	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+	<!-- jQuery -->
+	
+	{{ 'jquery.min.js' | asset_url | script_tag }}
+	
+	
+	{{ 'flexslider.css' | asset_url | stylesheet_tag }}
+    {{ 'styles_less.css' | asset_url | stylesheet_tag }}
+    {{ 'overrides.css' | asset_url | stylesheet_tag }}
+    
+	{% if settings.typeface_method == "typekit" and settings.typekit != "" %}
+	<script type="text/javascript" src="http://use.typekit.com/{{ settings.typekit }}.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	{% endif %}
+	{% if settings.typeface_method == "google_webfonts" %}
+	{% if settings.standard_font contains "Google" %}
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family={{ settings.standard_font | replace: ' ', '+' | remove: 'Google|' }}:300,400,700">
+    {% endif %}	
+    {% if settings.site_title_font_custom != "" %}
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family={{ settings.site_title_font_custom }}:300,400,700">
+	{% elsif settings.site_title_font contains "Google" %}
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family={{ settings.site_title_font | replace: ' ', '+' | remove: 'Google|' }}:300,400,700">
+    {% endif %}
+	{% if settings.heading_font_custom != "" %}
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family={{ settings.heading_font_custom }}:300,400,700">
+	{% elsif settings.heading_font contains "Google" %}
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family={{ settings.heading_font | replace: ' ', '+' | remove: 'Google|' }}:300,400,700">
+    {% endif %}
+    {% if settings.navigation_font_custom != "" %}
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family={{ settings.navigation_font_custom }}:300,400,700">
+    {% elsif settings.navigation_font contains "Google" %}
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family={{ settings.navigation_font | replace: ' ', '+' | remove: 'Google|' }}:300,400,700">
+    {% endif %}
+    	
+	{% endif %}	
+	
+	<script type="text/javascript">
+	//For Ajax
+		Shopify.money_format = '{{shop.money_format | replace: "'", '"'}}';
+	</script>
+    {{ 'modernizr.js' | asset_url | script_tag }}
+    {{ settings.additional_header }}
+</head>
+
+
+<script>
+jQuery.getJSON('http://freegeoip.net/json/?callback=?', function(location) {
+  if( location.country_code != "US"){
+    $('.hidePrice').hide();
+  }
+});
+</script>
+
+<body class="loading vertical">
+	{% if template contains "product" and settings.include_social_sharing %}
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    {% endif %}
+	<div class="wrapper">
+		<!-- TOP NAV -->
+		<div id="toolbar">
+			<a href="#search" class="icon icon-search accordion-toggle" data-toggle="collapse" data-parent="#toolbar">&nbsp;</a>
+			{% unless settings.toolbar_phone == "" %}<a href="#phone" class="icon icon-phone accordion-toggle" data-toggle="collapse" data-parent="#toolbar">&nbsp;</a>{% endunless %}
+			{% unless settings.toolbar_email == "" %}<a href="#email" class="icon icon-envelope accordion-toggle" data-toggle="collapse" data-parent="#toolbar">&nbsp;</a>{% endunless %}
+			{% if shop.customer_accounts_enabled %}<a href="/account" class="icon icon-user">&nbsp;</a>{% endif %}
+			<span class="hidePrice">
+				<a href="/cart" class="icon icon-shopping-cart">&nbsp;</a><a href="/cart" class="cart-total-items"><span class="badge">{{ cart.item_count }}</span></a>
+			</span>
+			{% if settings.main_navigation_style == "toolbar" %}
+            <a href="#menu" data-toggle="collapse" data-parent="#toolbar" class="menu icon icon-reorder accordion-toggle">&nbsp;</a>
+			<nav id="menu" class="collapse">
+				<ul id="pulldown" class="pulldown">
+					{% for link in linklists[settings.main_linklist].links %}
+					<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+					{% endfor %}
+				</ul>
+			</nav>
+			{% endif %}
+			{% unless settings.toolbar_email == "" %}
+			<div id="email" class="pulldown email collapse">
+				<div class="full-pad">
+					<a href="mailto:{{ settings.toolbar_email }}" class="btn alternate">Email {{ settings.toolbar_email }}</a>
+				</div>
+			</div>
+			{% endunless %}
+			{% unless settings.toolbar_phone == "" %}
+			<div id="phone" class="pulldown phone collapse">
+				<div class="full-pad">
+					<a href="tel:{{ settings.toolbar_phone | replace: ' ', '%20' }}" class="btn alternate"><span class="icon-phone"></span> Call {{ settings.toolbar_phone }}</a>
+				</div>
+			</div>
+			{% endunless %}
+			<div id="search" class="pulldown search collapse ">
+				<form name="productSearchForm" action="/search" class="full-pad input-append">
+					<input type="text" name="q" class="replace product_search" title="Search" placeholder="{{ settings.tr_search }}..." />
+					<button type="submit" class="submit btn alternate go_search">{{ settings.tr_search }}</button>
+				</form>
+			</div>
+		</div>
+		<!-- LOGO -->
+		<div class="header rel side-margin">
+		<a id="logo" class="bl" href="/">
+		{% if settings.use_logo_image %}
+			<img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }} logo">
+		{% else %}
+			{{ shop.name }}
+		{% endif %}
+		</a>
+		</div>
+		<!-- NAV -->
+		{% if settings.main_navigation_style == "below_logo" %}
+		<nav class="header navigation side-margin clearfix">
+			<ul id="top-nav">
+				{% for link in linklists[settings.main_linklist].links %}
+				<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+				{% endfor %}
+			</ul>
+		</nav>
+		{% endif %}
+		<!-- CONTENT -->
+		<div class="body{% if template == 'index' %} index{% endif %}">
+		{% if template == 'list-collections' %}
+			{% include 'collection-listing' %}
+		{% else %}
+			{{ content_for_layout }}
+		{% endif %}
+		</div>
+
+		<!-- SECONDARY NAV -->
+		<nav id="secondary-menu">
+			<ul>
+				{% for link in linklists.[settings.secondary_linklist].links %}			
+				<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+				{% endfor %}
+			</ul>
+		</nav>
+
+    <!-- FOOTER -->
+		<footer class="side-pad">
+		{% if settings.newsletter_enabled %}
+			<div id="sign-up">
+				<h4>{{ settings.tr_newsletter_heading }}</h4>
+				{% if settings.newsletter_system == 'mailchimp' %}
+				<form action="{{ settings.mailchimp_link }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="contact-form input-append" target="_blank">
+					<input type="email" value="" name="EMAIL" class="required email" id="contact_email" placeholder="Email address">
+					<button type="submit" name="subscribe" id="mc-embedded-subscribe" class="submit btn">{{ settings.tr_newsletter_button }}</button>
+				</form>
+				{% else %}    		
+					{% form 'customer' %}
+					{% if form.posted_successfully? %}
+					<p>{{ settings.tr_newsletter_success }}</p>
+					{% elsif form.errors %}
+					{% for field in form.errors %}
+					<p><em>{{ field }} - {{ form.errors.messages[field] }}</em></p>
+					{% endfor %}
+					{% endif %}
+					<div class="newsletter-wrap input-append">
+					<input type="hidden" id="contact_tags" name="contact[tags]" value="prospect,newsletter"/>
+					<input type="email" id="contact_email" name="contact[email]" placeholder="Enter email address" />
+					<button type='submit' class="action_button btn">{{ settings.tr_newsletter_button }}</button>
+					</div>
+					{% endform %}			
+				{% endif %}
+			</div>
+		{% endif %}
+		{% if settings.show_social_links %}
+			<aside id="social-media">
+				{% unless settings.facebook_handle == "" %}<a href="http://www.facebook.com/{{ settings.facebook_handle }}" title="View {{ shop.name }} Facebook page" class="icon icon-facebook-sign"></a>{% endunless %}
+				{% unless settings.twitter_handle == "" %}<a href="http://twitter.com/{{ settings.twitter_handle }}" title="View {{ shop.name }} Twitter page" class="icon icon-twitter-sign"></a>{% endunless %}
+				{% unless settings.pinterest_handle == "" %}<a href="http://pinterest.com/{{ settings.pinterest_handle }}" title="View {{ shop.name }} Pinterest page" class="icon icon-pinterest-sign"></a>{% endunless %}
+				{% unless settings.google_handle == "" %}<a href="http://plus.google.com/{{ settings.google_handle }}" title="View {{ shop.name }} Google Plus page" class="icon icon-google-plus-sign"></a>{% endunless %}
+			</aside>
+		{% endif %}
+			<nav class="footer navigation clearfix">
+				<ul id="footer_navigation">
+					{% for link in linklists[settings.footer_linklist].links %}
+					<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+					{% endfor %}
+				</ul>
+			</nav>
+			<div class="credit-cards">
+				<ul>			
+					{% if settings.accept_visa %}<li class="cc visa"></li>{% endif %}
+					{% if settings.accept_mastercard %}<li class="cc mc"></li>{% endif %}
+					{% if settings.accept_amex %}<li class="cc amex"></li>{% endif %}
+					{% if settings.accept_cirrus %}<li class="cc cirrus"></li>{% endif %}
+					{% if settings.accept_delta %}<li class="cc delta"></li>{% endif %}
+					{% if settings.accept_discover %}<li class="cc disc"></li>{% endif %}
+					{% if settings.accept_westernunion %}<li class="cc wu"></li>{% endif %}					
+					{% if settings.accept_paypal %}<li class="cc pp"></li>{% endif %}
+				</ul>
+			</div>
+		</footer>
+	</div>
+	
+	
+	{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+	{{ 'api.jquery.js' | shopify_asset_url | script_tag }}
+	{% if settings.ajax_cart %}
+	{{ 'ajaxify-shop.js' | asset_url | script_tag }}
+	{% endif %}
+	{{ 'retina.js' | asset_url | script_tag }}
+    {{ 'bootstrap-transition.js' | asset_url | script_tag }}
+    {{ 'bootstrap-collapse.js' | asset_url | script_tag }}
+    {{ 'jquery.flexslider-min.js' | asset_url | script_tag }} 
+    {{ 'jquery.easing.js' | asset_url | script_tag }} 
+
+    {% if template == "index" %}
+	<script type="text/javascript">
+	$(window).load(function(){
+		$('#slider').flexslider({
+			animation: "{{ settings.slide_transition }}",
+			slideshow: true,           
+			slideshowSpeed: {{ settings.slideshow_speed }},
+			controlNav: {% if settings.slide_navigation == "show" %}true{% else %}false{% endif %},      
+			directionNav: false,
+			start: function(slider){
+				$('body').removeClass('loading');
+			}
+		});
+	});
+	</script>
+	{% endif %}
+	{% if template == "product" %}
+	<script type="text/javascript">
+	$(window).load(function() {
+		// The slider being synced must be initialized first
+		$('#carousel').flexslider({
+			animation: "slide",
+			controlNav: false,
+			directionNav: true, 
+			animationLoop: false,
+			slideshow: false,
+			itemWidth: 100,
+			itemMargin: 10,
+			asNavFor: '#slider'
+		});
+
+		$('#slider').flexslider({
+			animation: "slide",
+			controlNav: false,
+			directionNav: false, 
+			smoothHeight: true,   
+			animationLoop: false,
+			slideshow: false,
+			sync: "#carousel",
+			start: function(slider){
+				$('body').removeClass('loading');
+			}
+		});
+	});
+	</script>
+	{% endif %}
+  {% if product.available %}
+  <script>
+    var selectCallback = function(variant, selector) {
+      if (variant && variant.available) {
+        // selected a valid variant
+        $('#add-to-cart').removeClass('disabled').removeAttr('disabled'); // remove unavailable class from add-to-cart button, and re-enable button
+        if(variant.compare_at_price > variant.price){
+          $('.options .price').html(Shopify.formatMoney(variant.price, "{{shop.money_with_currency_format}}") + '<span class="compare_at_price"> was <del>' + Shopify.formatMoney(variant.compare_at_price, "{{shop.money_with_currency_format}}") + '</del></span>');
+        } else {
+         $('.options .price').html(Shopify.formatMoney(variant.price, "{{shop.money_with_currency_format}}"));
+        }
+      } else {
+        // variant doesn't exist
+        $('#add-to-cart').addClass('disabled').attr('disabled', 'disabled'); // set add-to-cart button to unavailable class and disable button
+        var message = variant ? "Sold Out" : "Unavailable";
+        $('.options .price').text(message); // update price-field message
+      }
+    };
+
+jQuery(function() {
+  var optionSelectors = new Shopify.OptionSelectors("product-select", { product: {{ product | json }}, onVariantSelected: selectCallback });
+  var product = optionSelectors.product;
+  var found_available_variant = false;
+  for (var i=0; i<product.variants.length; i++) {
+    if (product.variants[i].available && found_available_variant === false) {
+      found_available_variant = true;
+      for (var j=0; j<product.options.length; j++) {
+        jQuery('.single-option-selector:eq(' + j + ')').val(product.variants[i].options[j]).trigger('change');
+      }
+    }
+  }
+});  
+</script>
+  {% endif %}
+
+<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+{{ settings.additional_footer }}
+</body>
+</html>

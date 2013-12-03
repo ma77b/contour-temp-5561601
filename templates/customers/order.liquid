@@ -1,0 +1,73 @@
+{% layout settings.customer_layout %}
+
+<div id="customer-accounts" class="clearfix side-pad">
+  <h1 class="title btm-border"><a class="icon icon-arrow-left" href="/account">&nbsp;</a> Order {{ order.name }} <small class="date">Placed on {{ order.created_at | date: "%B %d, %Y %I:%M%p" }}</small></h1>
+
+{% if order.cancelled %}
+  <p class="alert alert-info">Order Cancelled <span class="note">on {{ order.cancelled_at | date: "%B %d, %Y %I:%M%p" }}</span>
+    <span class="note">{{ order.cancel_reason }}</span></p>
+{% endif %}
+    
+<table id="order_details" class="table">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th class="center">Qty</th>
+      <th class="total">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for line_item in order.line_items %}
+    <tr id="{{ line_item.id }}" class="{% cycle 'odd', 'even' %}">
+      <td class="product">
+        {{ line_item.title | link_to: line_item.product.url }} 
+        {% if line_item.fulfillment %}
+          <div class="note">
+            <small>Fulfilled {{ line_item.fulfillment.created_at | date: "%b %d" }}
+            {% if line_item.fulfillment.tracking_number %}
+              <a href="{{ line_item.fulfillment.tracking_url }}">{{ line_item.fulfillment.tracking_company }} #{{ line_item.fulfillment.tracking_number}}</a>
+            {% endif %}
+            </small>
+          </div>
+        {% endif %}
+      </td>
+  
+      <td class="quantity cente">{{ line_item.quantity }}</td>
+      <td class="total money">{{ line_item.quantity | times: line_item.price | money }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>  
+  <tfoot>
+    <tr class="order_summary note">
+      <td class="order-label" colspan="2">Subtotal:</td>
+      <td class="total money">{{ order.subtotal_price | money }}</td>
+    </tr>   
+
+    {% for discount in order.discounts %}
+      <tr class="order_summary discount">
+        <td class="order-label" colspan="2">{{ discount.code }} Discount:</td>
+        <td class="total money">{{ discount.savings | money }}</td>
+      </tr>
+    {% endfor %}
+
+    {% for shipping_method in order.shipping_methods %}
+    <tr class="order_summary note">
+      <td class="order-label" colspan="2">Shipping ({{ shipping_method.title }}):</td>
+      <td class="total money">{{ shipping_method.price | money }}</td>
+    </tr>
+    {% endfor %}
+    
+    {% for tax_line in order.tax_lines %}
+      <tr class="order_summary note">
+        <td class="order-label" colspan="2">Tax ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%):</td>
+        <td class="total money">{{ tax_line.price | money }}</td>
+      </tr>
+    {% endfor %}    
+            
+    <tr class="order_summary order_total">
+      <td class="order-label" colspan="2"><strong>Total:</strong></td>
+      <td class="total money"><strong>{{ order.total_price | money }} {{ order.currency }}</strong></td>
+    </tr>   
+  </tfoot>  
+</table>
+</div>

@@ -1,0 +1,53 @@
+<div id="article" class="side-pad">
+
+  <div class="article-body btm-margin">
+    <article class="content">
+        <hgroup>
+         <h1>{{ article.title }}<small class="date">{{ article.published_at | date: "%A, %d %B, %Y" }}</small></h1>
+        </hgroup>
+      {{ article.content }}
+    </article>
+  </div> <!-- /.article-body -->
+
+  {% if blog.comments_enabled? %}
+  {% if article.comments.size > 0 %}
+  <div id="comments" class="comments btm-margin">
+    <h3>{{ article.comments.size }} {% if article.comments.size == 1 %}{{ settings.tr_comment }}{% else %}{{ settings.tr_comments }}{% endif %}</h3>
+    {% for comment in article.comments %}
+    <div id="comment-{{ comment.id }}" class="comment top-border clearfix">
+       <div class="details">
+        <h4>{{ comment.author }}<small class="date">{{ comment.created_at | date: "%A, %d %B, %Y" }}</small></h4>
+        {{ comment.content }}
+      </div>
+    </div> <!-- /.comment -->
+    {% endfor %}
+  </div> <!-- /#comments -->
+  {% endif %}
+  {% endif %}
+
+  {% if blog.comments_enabled? %}
+  <div class="comment_form clearfix top-border">
+    {% form article %}
+    <h3>{{ settings.tr_leave_comment }}</h3>
+
+      {% if form.posted_successfully? %}
+      {% if blog.moderated? %}
+         <p class="alert alert-info">{{ settings.tr_comment_success_needs_approval }}</p>
+      {% else %}
+       <p class="alert alert-info">{{ settings.tr_comment_success }}</p>
+      {% endif %}
+      {% endif %}
+
+      {% if form.errors %}
+      <p class="alert alert-info">{{ settings.tr_comment_error }}</p>
+      {% endif %}
+      <input type="text" id="comment_author" name="comment[author]" placeholder="{{ settings.tr_your_name }}"  />
+      <input type="text" id="comment_email" name="comment[email]" placeholder="{{ settings.tr_your_email }}"  />
+      <textarea id="comment_body" name="comment[body]" cols="40" rows="5">{{form.body}}</textarea>
+      <button type="submit" id="comment-submit" class="submit btn">{{ settings.tr_post_comment }}</button>
+
+    {% endform %}
+  </div> <!-- /div.comment_form -->
+  {% endif %}
+
+</div> <!-- /#article -->

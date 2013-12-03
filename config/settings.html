@@ -1,0 +1,1239 @@
+<div class="theme">
+  <h2>Lucid Mobile</h2>
+  <p>If you need assistance with the theme or have any bugs to report, please visit our support site: <a href="http://support.luciddesign.co.nz/discussions/shopify-themes" target="_blank">http://support.luciddesign.co.nz/discussions/shopify-themes</a></p>
+</div>
+<fieldset>
+  <legend>General</legend>
+  <h3>Branding</h3>
+  <table class="search_bar_location">
+    <tr>
+      <th><label for="use_logo_image">Use an image</label></th>
+      <td><input type="checkbox" id="use_logo_image" name="use_logo_image" value="0"/></td>
+    </tr>
+    <tr>
+      <th><label for="logo_image">Logo file<br /><small>(Recommended size: 300 x 100px)</small></label></th>
+      <td><input type="file" id="logo_image" name="logo.png" data-max-width="960" data-max-height="400" /></td>
+    </tr>
+    <tr>
+      <th><label for="logo_offset">Logo baseline offset</label></th>
+      <td><input type="text" id="logo_offset" name="logo_offset" value="10px" /></td>
+    </tr>
+    <tr>
+      <th><label for="icon_image">Apple Touch Icon</label></th>
+      <td><input type="file" id="icon_image" name="icon.png" /></td>
+    </tr>
+  </table>
+  <h3>Background</h3>
+  <table>
+    <tr>
+      <th><label for="custom_background_image">Use a background image?</label></th>
+      <td>
+        <input type="checkbox" id="custom_background_image" name="custom_background_image" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="background_image">Background Image</label></th>
+      <td>
+        <input type="file" id="background_image" name="background_image.png" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="background_image_style">Background image style</label></th>
+      <td>
+        <input type="radio" name="background_image_style" value="repeat" /> Repeat
+        <input type="radio" name="background_image_style" value="no-repeat" /> No-repeat
+      </td>
+    </tr>
+  </table>
+  <h3>Other</h3>
+  <table>
+    <tr>
+      <th><label for="main_navigation_style">Navigation alignment</label></th>
+      <td>
+        <select name="main_navigation_style" id="main_navigation_style">
+          <option value="toolbar" selected="selected">Toolbar dropdown</option>
+          <option value="below_logo">Below logo</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="main_linklist">Main menu linklist</label></th>
+      <td>
+        <select name="main_linklist" class="linklist" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="pagination_limit">Pagination limit</label></th>
+      <td>
+        <select name="pagination_limit" id="pagination_limit">
+          <option value="48">48</option>
+          <option value="32">32</option>
+          <option value="24">24</option>
+          <option value="20" selected="selected">20</option>
+          <option value="16">16</option>
+          <option value="12">12</option>
+          <option value="8">8</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="line-style">Separator line style</label></th>
+      <td>
+        <select name="line-style" id="line-style">
+          <option value="solid" selected="selected">Solid</option>
+          <option value="dotted">Dotted</option>
+          <option value="dashed">Dashed</option>
+          <option value="none">None</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Typography</legend>
+  <table>
+    <tr>
+      <th><label for="typeface_method">Fonts</label></th>
+      <td>
+        <select name="typeface_method" id="typeface_method">
+          <option value="standard">Standard</option>
+          <option value="google_webfonts" selected="selected">Google</option>
+          <option value="typekit">Typekit</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="typekit">Typekit ID</label></th>
+      <td><input type="text" id="typekit" name="typekit" value="" /></td>
+    </tr>
+  </table>
+  <h3>Base</h3>
+  <table>
+    <tr>
+      <th><label for="standard_font">Font</label></th>
+      <td>
+        <select class="font" name="standard_font" id="standard_font">
+          <option value="Helvetica, Arial, sans-serif" selected="selected">Helvetica/Arial</option>    
+          <optgroup label="Google Fonts">
+            <option value="Google|Amatic SC">Amatic SC</option>
+            <option value="Google|Arvo">Arvo</option>
+            <option value="Google|Average Sans">Average Sans</option>
+            <option value="Google|Droid Serif">Droid Serif</option>
+            <option value="Google|Economica">Economica</option>
+            <option value="Google|Lora">Lora</option>
+            <option value="Google|Nunito">Nunito</option>
+            <option value="Google|Open Sans">Open Sans</option>  
+            <option value="Google|Oswald">Oswald</option>
+            <option value="Google|PT Sans Narrow">PT Sans Narrow</option>
+            <option value="Google|PT Serif">PT Serif</option>
+            <option value="Google|Raleway">Raleway</option>
+            <option value="Google|Rancho">Rancho</option>  
+            <option value="Google|Sanchez">Sanchez</option>        
+            <option value="Google|Sancreek">Sancreek</option>
+            <option value="Google|Ubuntu Condensed">Ubuntu Condensed</option>
+            <option value="Google|Unkempt">Unkempt</option>
+          </optgroup>
+        </select>   
+      </td>
+    </tr>
+    <tr>
+      <th><label for="standard_font_size">Font size</label></th>
+      <td><input id="standard_font_size" name="standard_font_size" value="13px"/></td>
+    </tr>
+  </table>
+ <h3>Site Title</h3>
+  <table>
+    <tr>
+      <th><label for="site_title_font">Font</label></th>
+      <td>
+        <select class="font" name="site_title_font" id="site_title_font">  
+          <optgroup label="Google Fonts">
+            <option value="Google|Amatic SC">Amatic SC</option>
+            <option value="Google|Arvo">Arvo</option>
+            <option value="Google|Average Sans">Average Sans</option>
+            <option value="Google|Droid Serif">Droid Serif</option>
+            <option value="Google|Economica">Economica</option>
+            <option value="Google|Lora">Lora</option>
+            <option value="Google|Nunito">Nunito</option>
+            <option value="Google|Open Sans">Open Sans</option>  
+            <option value="Google|Oswald">Oswald</option>
+            <option value="Google|PT Sans Narrow">PT Sans Narrow</option>
+            <option value="Google|PT Serif">PT Serif</option>
+            <option value="Google|Raleway" selected="selected">Raleway</option>
+            <option value="Google|Rancho">Rancho</option>  
+            <option value="Google|Sanchez">Sanchez</option>        
+            <option value="Google|Sancreek">Sancreek</option>
+            <option value="Google|Ubuntu Condensed">Ubuntu Condensed</option>
+            <option value="Google|Unkempt">Unkempt</option>
+          </optgroup>        
+        </select>       
+      </td>
+    </tr>
+    <tr>
+      <th><label for="site_title_font_custom">Custom font</label></th>
+      <td><input id="site_title_font_custom" name="site_title_font_custom" value=""/></td>
+    </tr>
+    <tr>
+      <th><label for="site_title_font_weight">Font weight</label></th>
+      <td>
+        <select name="site_title_font_weight" id="site_title_font_weight">
+          <option value="700">Bold</option>
+          <option value="400" selected="selected">Regular</option>
+          <option value="300">Light</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="site_title_font_case">Heading case</label></th>
+      <td>
+        <select name="site_title_font_case" id="site_title_font_case">
+          <option value="none">Normal</option>
+          <option value="uppercase" selected="selected">Uppercase</option>
+          <option value="lowercase">Lowercase</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="site_title_font_size">Font size</label></th>
+      <td><input id="site_title_font_size" name="site_title_font_size" value="32px" /></td>
+    </tr>
+  </table>
+  <h3>Navigation</h3>
+  <table>
+    <tr>
+      <th><label for="navigation_font">Font</label></th>
+      <td>
+        <select class="font" name="navigation_font" id="navigation_font">  
+          <optgroup label="Google Fonts">
+            <option value="Google|Amatic SC">Amatic SC</option>
+            <option value="Google|Arvo">Arvo</option>
+            <option value="Google|Average Sans">Average Sans</option>
+            <option value="Google|Droid Serif">Droid Serif</option>
+            <option value="Google|Economica">Economica</option>
+            <option value="Google|Lora">Lora</option>
+            <option value="Google|Nunito">Nunito</option>
+            <option value="Google|Open Sans">Open Sans</option>  
+            <option value="Google|Oswald">Oswald</option>
+            <option value="Google|PT Sans Narrow" selected="selected">PT Sans Narrow</option>
+            <option value="Google|PT Serif">PT Serif</option>
+            <option value="Google|Raleway">Raleway</option>
+            <option value="Google|Rancho">Rancho</option>  
+            <option value="Google|Sanchez">Sanchez</option>        
+            <option value="Google|Sancreek">Sancreek</option>
+            <option value="Google|Ubuntu Condensed">Ubuntu Condensed</option>
+            <option value="Google|Unkempt">Unkempt</option>
+          </optgroup>        
+        </select>       
+      </td>
+    </tr>
+    <tr>
+      <th><label for="navigation_font_custom">Custom font</label></th>
+      <td><input id="navigation_font_custom" name="navigation_font_custom" value=""/></td>
+    </tr>
+    <tr>
+      <th><label for="navigation_font_weight">Font weight</label></th>
+      <td>
+        <select name="navigation_font_weight" id="navigation_font_weight">
+          <option value="700">Bold</option>
+          <option value="400" selected="selected">Regular</option>
+          <option value="300">Light</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="navigation_font_style">Font style</label></th>
+      <td>
+        <select name="navigation_font_style" id="navigation_font_style">
+          <option value="none">None</option>
+          <option value="uppercase" selected="selected">Uppercase</option>
+          <option value="lowercase">Lowercase</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="navigation_font_size">Font size</label></th>
+      <td><input id="navigation_font_size" name="navigation_font_size" value="14px" /></td>
+    </tr>
+  </table>
+  <h3>Headings</h3>  
+  <table>
+    <tr>
+        <th><label for="letterpress_headings">Letterpress headings</label></th>
+        <td><input type="checkbox" id="letterpress_headings" name="letterpress_headings" value="1" /></td>
+    </tr>
+    <tr>
+      <th><label for="heading_font">Font</label></th>
+      <td>
+        <select class="font" name="heading_font" id="heading_font">    
+          <optgroup label="Google Fonts">
+            <option value="Google|Amatic SC">Amatic SC</option>
+            <option value="Google|Arvo">Arvo</option>
+            <option value="Google|Average Sans">Average Sans</option>
+            <option value="Google|Droid Serif">Droid Serif</option>
+            <option value="Google|Economica">Economica</option>
+            <option value="Google|Lora">Lora</option>
+            <option value="Google|Nunito">Nunito</option>
+            <option value="Google|Open Sans">Open Sans</option>  
+            <option value="Google|Oswald">Oswald</option>
+            <option value="Google|PT Sans Narrow" selected="selected">PT Sans Narrow</option>
+            <option value="Google|PT Serif">PT Serif</option>
+            <option value="Google|Raleway">Raleway</option>
+            <option value="Google|Rancho">Rancho</option>  
+            <option value="Google|Sanchez">Sanchez</option>        
+            <option value="Google|Sancreek">Sancreek</option>
+            <option value="Google|Ubuntu Condensed">Ubuntu Condensed</option>
+            <option value="Google|Unkempt">Unkempt</option>
+          </optgroup>
+        </select>       
+      </td>
+    </tr>
+    <tr>
+      <th><label for="heading_font_custom">Custom font</label></th>
+      <td><input id="heading_font_custom" name="heading_font_custom" value="" /></td>
+    </tr>
+    <tr>
+      <th><label for="heading_font_weight">Font weight</label></th>
+      <td>
+        <select name="heading_font_weight" id="heading_font_weight">
+          <option value="700">Bold</option>
+          <option value="400" selected="selected">Regular</option>
+          <option value="300">Light</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="heading_font_case">Font case</label></th>
+      <td>
+        <select name="heading_font_case" id="heading_font_case">
+          <option value="none" selected="selected">None</option>
+          <option value="uppercase">Uppercase</option>
+          <option value="lowercase">Lowercase</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <h3>Heading H1</h3>
+      </th>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <th><label for="heading_h1_font_size">Font size</label></th>
+      <td><input id="heading_h1_font_size" name="heading_h1_font_size" value="28px" /></td>
+    </tr>
+    <tr>
+      <th><label for="heading_h1_line_height">Line height</label></th>
+      <td><input id="heading_h1_line_height" name="heading_h1_line_height" value="125%" /></td>
+    </tr>
+    <tr>
+      <th>
+        <h3>Heading H2</h3>
+      </th>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <th><label for="heading_h2_font_size">Font size</label></th>
+      <td><input id="heading_h2_font_size" name="heading_h2_font_size" value="24px" /></td>
+    </tr>
+    <tr>
+      <th><label for="heading_h2_line_height">Line height</label></th>
+      <td><input id="heading_h2_line_height" name="heading_h2_line_height" value="125%" /></td>
+    </tr>
+    <tr>
+      <th>
+        <h3>Heading H3</h3>
+      </th>
+      <td>&nbsp;</td>
+    </tr>
+
+    <tr>
+      <th><label for="heading_h3_font_size">Font size</label></th>
+      <td><input id="heading_h3_font_size" name="heading_h3_font_size" value="18px" /></td>
+    </tr>
+    <tr>
+      <th><label for="heading_h3_line_height">Line height</label></th>
+      <td><input id="heading_h3_line_height" name="heading_h3_line_height" value="125%" /></td>
+    </tr>
+    <tr>
+      <th>
+        <h3>Heading H4</h3>
+      </th>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <th><label for="heading_h4_font_size">Font size</label></th>
+      <td><input id="heading_h4_font_size" name="heading_h4_font_size" value="16px" /></td>
+    </tr>
+    <tr>
+      <th><label for="heading_h4_line_height">Line height</label></th>
+      <td><input id="heading_h4_line_height" name="heading_h4_line_height" value="150%" /></td>
+    </tr>
+  </table>  
+</fieldset>
+<fieldset>
+  <legend>Colors</legend>
+<table>
+    <tr>
+      <th><label for="main_background_color">Body background</label></th>
+      <td><input type="text" id="main_background_color" name="main_background_color" class="color" value="#ffffff"/></td>
+    </tr>
+    <tr>
+      <th><label for="logo_color">Logo color</label></th>
+      <td><input type="text" id="logo_color" name="logo_color" class="color" value="#444444" /></td>
+    </tr>
+    <tr>
+      <th><label for="body_text_color">Body text color</label></th>
+      <td><input id="body_text_color" name="body_text_color" class="color" type="text" value="#555555" /></td>
+    </tr>
+    <tr>
+      <th><label for="body_link_color">Body link color</label></th>
+      <td><input id="body_link_color" name="body_link_color" class="color" type="text" value="#222222" /></td>
+    </tr>
+    <tr>
+      <th><label for="nav_background_color">Navigation background color</label></th>
+      <td><input name="nav_background_color" class="color" type="text" value="#fcfcfc" /></td>
+    </tr>
+    <tr>
+      <th><label for="nav_text_color">Navigation text color</label></th>
+      <td><input name="nav_text_color" class="color" type="text" value="#666666" /></td>
+    </tr>
+    <tr>
+      <th><label for="main_line">Main separator line</label></th>
+      <td><input name="main_line" class="color" type="text" value="#eeeeee" /></td>
+    </tr>
+    <tr>
+      <th><label for="nav_line">Navigation separator line</label></th>
+      <td><input name="nav_line" class="color" type="text" value="#eeeeee" /></td>
+    </tr>
+    <tr>
+      <th><label for="nav_horiz_text_color">Horizontal navigation text color</label></th>
+      <td><input name="nav_horiz_text_color" class="color" type="text" value="#444444" /></td>
+    </tr>
+     <tr>
+      <th><label for="sale_text_color">Sale banner text color</label></th>
+      <td><input name="sale_text_color" class="color" type="text" value="#FFFFFF" /></td>
+    </tr>
+    <tr>
+      <th><label for="sale_color">Sale banner background color</label></th>
+      <td><input name="sale_color" class="color" type="text" value="#444444" /></td>
+    </tr>
+    <tr>
+      <th><label for="toolbar_button_background_color">Button background color</label></th>
+      <td><input name="toolbar_button_background_color" class="color" type="text" value="#666666" /></td>
+    </tr>
+    <tr>
+      <th><label for="toolbar_button_color">Button text color</label></th>
+      <td><input name="toolbar_button_color" class="color" type="text" value="#fcfcfc" /></td>
+    </tr>
+    <tr>
+      <th><label for="toolbar_button_alternate_background_color">Alternate button background color</label></th>
+      <td><input name="toolbar_button_alternate_background_color" id="toolbar_button_alternate_background_color" class="color" type="text" value="#f4f4f4" /></td>
+    </tr>
+    <tr>
+      <th><label for="toolbar_button_alternate_color">Alternate button text color</label></th>
+      <td><input name="toolbar_button_alternate_color" id="toolbar_button_alternate_color" class="color" type="text" value="#666666" /></td>
+    </tr>
+    <tr>
+      <th><label for="alert_info_background_color">Alert info background color</label></th>
+      <td><input name="alert_info_background_color" id="alert_info_background_color" class="color" type="text" value="#dddddd" /></td>
+    </tr>
+    <tr>
+      <th><label for="alert_info_text_color">Alert info text color</label></th>
+      <td><input name="alert_info_text_color" id="alert_info_text_color" class="color" type="text" value="#555555" /></td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Toolbar</legend>
+  <table>
+    <tr>
+      <th><label for="toolbar_email">Email address</label></th>
+      <td>
+        <input type="text" id="toolbar_email" name="toolbar_email" value="email@domain.com" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="toolbar_phone">Phone number</label></th>
+      <td>
+        <input type="text" id="toolbar_phone" name="toolbar_phone" value="(123) 456 7890" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="toolbar_background_color">Background color</label></th>
+      <td><input name="toolbar_background_color" class="color" type="text" value="#fcfcfc" /></td>
+    </tr>
+    <tr>
+      <th><label for="toolbar_color">Icon color</label></th>
+      <td><input name="toolbar_color" class="color" type="text" value="#666666" /></td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Home Page</legend>
+  <table>
+    <tr>
+      <th><label for="frontpage_intro">Frontpage intro source</label></th>
+      <td>
+        <select name="frontpage_intro" class="page" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="featured_links_title">Featured links title</label></th>
+      <td><input type="text" id="featured_links_title" name="featured_links_title" value="Browse by&hellip;" /></td>
+    </tr>
+    <tr>
+      <th><label for="featured_links">Featured links</label></th>
+      <td><select name="featured_links" class="linklist" /></td>
+    </tr>
+    <tr>
+      <th><label for="featured_collections">Featured collections</label></th>
+      <td><select name="featured_collections" class="linklist" /></td>
+    </tr>
+    <tr>
+      <th><label for="show_collection_titles">Show collection titles?</label></th>
+      <td>
+        <input type="checkbox" id="show_collection_titles" name="show_collection_titles" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="frontpage_collection">Frontpage product collection</label></th>
+      <td>
+        <select name="frontpage_collection" class="collection" />
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Collection</legend>
+  <table>
+    <tr>
+      <th><label for="products_per_row">How many products per row?</label></th>
+      <td>
+        <select name="products_per_row" id="products_per_row">
+          <option value="1" selected="selected">1</option>
+          <option value="2">2</option>
+        </select>
+      </td>
+    </tr> 
+     <tr>
+      <th><label for="enable_tag_filter">Enable tag filtering</label></th>
+      <td><input type="checkbox" id="enable_tag_filter" name="enable_tag_filter" value="1"/></td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Product Page</legend>
+  <table>
+    <tr>
+      <th><label for="title_position">Title position</label></th>
+      <td>
+        <select name="title_position" id="title_position">
+          <option value="above_images">Above images</option>
+          <option value="below_images" selected="selected">Below images</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="description_position">Description position</label></th>
+      <td>
+        <select name="description_position" id="description_position">
+          <option value="above_add_to_cart">Above button</option>
+          <option value="below_add_to_cart" selected="selected">Below button</option>
+        </select>
+      </td>
+    </tr>
+     <tr>
+      <th><label for="ajax_cart">Enable AJAX add to cart?</label></th>
+      <td>
+        <input type="checkbox" id="ajax_cart" name="ajax_cart" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="display_product_type">Display product type?</label></th>
+      <td>
+        <input type="checkbox" id="display_product_type" name="display_product_type" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="display_product_vendor">Display product vendor?</label></th>
+      <td>
+        <input type="checkbox" id="display_product_vendor" name="display_product_vendor" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="display_product_tags">Display product tags?</label></th>
+      <td>
+        <input type="checkbox" id="display_product_tags" name="display_product_tags" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="include_social_sharing">Display social links?</label></th>
+      <td>
+        <input type="checkbox" id="include_social_sharing" name="include_social_sharing" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="show_more_from_collection">Show more products?</label></th>
+      <td>
+        <input type="checkbox" id="show_more_from_collection" name="show_more_from_collection" value="1" />
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Slideshow</legend>
+  <table>
+    <tr>
+      <th><label for="show_slideshow">Show slideshow?</label></th>
+      <td>
+        <input type="checkbox" id="show_slideshow" name="show_slideshow" value="0" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="slide_transition">Slide transition</label></th>
+      <td>
+        <select name="slide_transition" id="slide_transition">
+          <option value="fade" selected="selected">Fade</option>
+          <option value="slide">Slide</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="slide_navigation">Slide navigation</label></th>
+      <td>
+        <select name="slide_navigation" id="slide_navigation">
+          <option value="show">Show</option>
+          <option value="none">Hide</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <th><label for="slideshow_speed">Show slideshow images for</label></th>
+      <td>
+        <select name="slideshow_speed" id="slideshow_speed">
+          <option value="8000">8 seconds</option>
+          <option value="7000">7 seconds</option>
+          <option value="6000">6 seconds</option>
+          <option value="5000" selected="selected">5 seconds</option>
+          <option value="4000">4 seconds</option>
+          <option value="3000">3 seconds</option>
+          <option value="2000">2 seconds</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        &nbsp;
+      </th>
+      <td>
+        <h3>Slideshow images</h3>
+        Try to keep your slideshow images the same size.
+      </td>
+    </tr>
+    <tr>
+      <th><label for="show_image_1">Show image 1?</label></th>
+      <td>
+        <input type="checkbox" id="show_image_1" name="show_image_1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="slideshow_1">Slideshow image 1</label></th>
+      <td>
+        <input type="file" id="slideshow_1" name="slideshow_1.jpg" data-max-width="870" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="image_1_link">URL for image 1 click</label></th>
+      <td>
+        <input type="text" id="image_1_link" name="image_1_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label for="image_1_desc">Image 1 description</label>
+      </th>
+      <td>
+        <textarea name="image_1_desc" cols="40" rows="4" id="image_1_desc" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="show_image_2">Show image 2?</label></th>
+      <td>
+        <input type="checkbox" id="show_image_2" name="show_image_2" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="slideshow_2">Slideshow image 2</label></th>
+      <td>
+        <input type="file" id="slideshow_2" name="slideshow_2.jpg" data-max-width="870" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="image_2_link">URL for image 2 click</label></th>
+      <td>
+        <input type="text" id="image_2_link" name="image_2_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label for="image_2_desc">Image 2 description</label>
+      </th>
+      <td>
+        <textarea name="image_2_desc" cols="40" rows="4" id="image_2_desc" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="show_image_3">Show image 3?</label></th>
+      <td>
+        <input type="checkbox" id="show_image_3" name="show_image_3" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="slideshow_3">Slideshow image 3</label></th>
+      <td>
+        <input type="file" id="slideshow_3" name="slideshow_3.jpg" data-max-width="870" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="image_3_link">URL for image 3 click</label></th>
+      <td>
+        <input type="text" id="image_3_link" name="image_3_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label for="image_3_desc">Image 3 description</label>
+      </th>
+      <td>
+        <textarea name="image_3_desc" cols="40" rows="4" id="image_3_desc" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="show_image_4">Show image 4?</label></th>
+      <td>
+        <input type="checkbox" id="show_image_4" name="show_image_4" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="slideshow_4">Slideshow image 4</label></th>
+      <td>
+        <input type="file" id="slideshow_4" name="slideshow_4.jpg" data-max-width="870" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="image_4_link">URL for image 4 click</label></th>
+      <td>
+        <input type="text" id="image_4_link" name="image_4_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label for="image_4_desc">Image 4 description</label>
+      </th>
+      <td>
+        <textarea name="image_4_desc" cols="40" rows="4" id="image_4_desc" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="show_image_5">Show image 5?</label></th>
+      <td>
+        <input type="checkbox" id="show_image_5" name="show_image_5" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="slideshow_5">Slideshow image 5</label></th>
+      <td>
+        <input type="file" id="slideshow_5" name="slideshow_5.jpg" data-max-width="870" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="image_5_link">URL for image 5 click</label></th>
+      <td>
+        <input type="text" id="image_5_link" name="image_5_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label for="image_5_desc">Image 5 description</label>
+      </th>
+      <td>
+        <textarea name="image_5_desc" cols="40" rows="4" id="image_5_desc" value="" />
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Localizations</legend>
+  <p>Use these settings to change the text throughout the store.</p>
+  <table>
+    <tr>
+      <td colspan="2"><h3>Global Translations</h3></td>
+    </tr>
+    <tr>
+      <th><label for="tr_search">Search</label></th>
+      <td>
+        <input type="text" id="tr_search" name="tr_search" value="Search" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_current_view">Currently viewing in mobile</label></th>
+      <td>
+        <input type="text" id="tr_current_view" name="tr_current_view" value="Mobile" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_switch_view">Switch to original</label></th>
+      <td>
+        <input type="text" id="tr_switch_view" name="tr_switch_view" value="Desktop" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_newsletter_heading">Newsletter Heading</label></th>
+      <td>
+        <input type="text" id="tr_newsletter_heading" name="tr_newsletter_heading" value="Sign up to our newsletter" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_newsletter_button">Newsletter Button</label></th>
+      <td>
+        <input type="text" id="tr_newsletter_button" name="tr_newsletter_button" value="Email Me!" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_newsletter_success">Newsletter Success</label></th>
+      <td>
+        <input type="text" id="tr_newsletter_success" name="tr_newsletter_success" value="Terrific! Thank you for joining the mailing list." />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"><h3>Collection Page</h3></td>
+    </tr>
+    <tr>
+      <th><label for="tr_starting_from">Starting from</label></th>
+      <td>
+        <input type="text" id="tr_starting_from" name="tr_starting_from" value="from" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_was">Price when on sale</label></th>
+      <td>
+        <input type="text" id="tr_was" name="tr_was" value="was" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_sale_banner">Sale banner</label></th>
+      <td>
+        <input type="text" id="tr_sale_banner" name="tr_sale_banner" value="Sale" />
+      </td>
+    </tr>
+
+    <tr>
+      <th><label for="tr_featured_products">Featured products</label></th>
+      <td>
+        <input type="text" id="tr_featured_products" name="tr_featured_products" value="Featured Products" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_all_products">All products</label></th>
+      <td>
+        <input type="text" id="tr_all_products" name="tr_all_products" value="All Products" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_viewing">Viewing</label></th>
+      <td>
+        <input type="text" id="tr_viewing" name="tr_viewing" value="Viewing" />
+      </td>
+    </tr>
+       <tr>
+      <th><label for="tr_no_products">No products</label></th>
+      <td>
+        <input type="text" id="tr_no_products" name="tr_no_products" value="This are no products in this collection." />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"><h3>Product Page</h3></td>
+    </tr>
+    <tr>
+      <th><label for="tr_add_to_cart">Add to Cart</label></th>
+      <td>
+        <input type="text" id="tr_add_to_cart" name="tr_add_to_cart" value="Add to Cart" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_success_add_to_cart">Item Added</label></th>
+      <td>
+        <input type="text" id="tr_success_add_to_cart" name="tr_success_add_to_cart" value="Success!" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_sold_out">Sold Out</label></th>
+      <td>
+        <input type="text" id="tr_sold_out" name="tr_sold_out" value="Sold Out" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_type">Type</label></th>
+      <td>
+        <input type="text" id="tr_type" name="tr_type" value="Type" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_vendor">Vendor</label></th>
+      <td>
+        <input type="text" id="tr_vendor" name="tr_vendor" value="Vendor" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_tags">Tags</label></th>
+      <td>
+        <input type="text" id="tr_tags" name="tr_tags" value="Tags" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_more_from_collection">View more from this collection</label></th>
+      <td>
+        <input type="text" id="tr_more_from_collection" name="tr_more_from_collection" value="View more from this collection" />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"><h3>Cart Page</h3></td>
+    </tr>
+    <tr>
+      <th><label for="tr_cart_summary">Cart summary</label></th>
+      <td>
+        <input type="text" id="tr_cart_summary" name="tr_cart_summary" value="Cart Summary" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_cart_item">Item title</label></th>
+      <td>
+        <input type="text" id="tr_cart_item" name="tr_cart_item" value="Item" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_price">Price</label></th>
+      <td>
+        <input type="text" id="tr_price" name="tr_price" value="Price" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_quantity">Quantity</label></th>
+      <td>
+        <input type="text" id="tr_quantity" name="tr_quantity" value="Qty" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_subtotal">Subtotal</label></th>
+      <td>
+        <input type="text" id="tr_subtotal" name="tr_subtotal" value="Subtotal" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_cart_update">Update cart</label></th>
+      <td>
+        <input type="text" id="tr_cart_update" name="tr_cart_update" value="Update" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_proceed_to_checkout">Proceed to checkout</label></th>
+      <td>
+        <input type="text" id="tr_proceed_to_checkout" name="tr_proceed_to_checkout" value="Checkout" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_cart_empty">Your shopping cart is empty</label></th>
+      <td>
+        <input type="text" id="tr_cart_empty" name="tr_cart_empty" value="Your shopping cart is empty" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_add_note">Add a note</label></th>
+      <td>
+        <input type="text" id="tr_add_note" name="tr_add_note" value="Add a note to your order" />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"><h3>Article Page</h3></td>
+    </tr>
+    <tr>
+      <th><label for="tr_comment">Comment</label></th>
+      <td>
+        <input type="text" id="tr_comment" name="tr_comment" value="Comment" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_comments">Comments</label></th>
+      <td>
+        <input type="text" id="tr_comments" name="tr_comments" value="Comments" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_leave_comment">Leave a comment</label></th>
+      <td>
+        <input type="text" id="tr_leave_comment" name="tr_leave_comment" value="Leave a comment" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_your_name">Your name...</label></th>
+      <td>
+        <input type="text" id="tr_your_name" name="tr_your_name" value="Your name..." />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_your_email">Your email...</label></th>
+      <td>
+        <input type="text" id="tr_your_email" name="tr_your_email" value="Your email..." />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_post_comment">Post Comment</label></th>
+      <td>
+        <input type="text" id="tr_post_comment" name="tr_post_comment" value="Post Comment" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_comment_success_needs_approval">Comment posted successfully and requires approval.</label></th>
+      <td>
+        <textarea id="tr_comment_success_needs_approval" name="tr_comment_success_needs_approval" cols="60" rows="5">Successfully posted your comment. It will have to be approved by the blog owner first before showing up.</textarea>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_comment_success">Comment posted successfully.</label></th>
+      <td>
+        <textarea id="tr_comment_success" name="tr_comment_success" cols="60" rows="5">Successfully posted your comment.</textarea>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_comment_error" cols="60" rows="5">Error posting comment</label></th>
+      <td>
+        <textarea id="tr_comment_error" name="tr_comment_error" cols="60" rows="5">Not all the fields have been filled out correctly</textarea>
+      </td>
+    </tr>  
+    <tr>
+      <td colspan="2"><h3>Search Page</h3></td>
+    </tr>
+    <tr>
+      <th><label for="tr_search_results">Search Results</label></th>
+      <td>
+        <input type="text" id="tr_search_results" name="tr_search_results" value="Search Results" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_empty_search">Empty query</label></th>
+      <td>
+        <input type="text" id="tr_empty_search" name="tr_empty_search" value="Your search query was empty." />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_no_search_results">No results</label></th>
+      <td>
+        <input type="text" id="tr_no_search_results" name="tr_no_search_results" value="Your search did not yield any results" />
+      </td>
+    </tr>
+     <tr>
+      <td colspan="2"><h3>Contact Page</h3></td>
+    </tr>
+    <tr>
+      <th><label for="tr_contact_success">Message submitted successfully</label></th>
+      <td>
+        <input type="text" id="tr_contact_success" name="tr_contact_success" value="Thanks for contacting us! We'll get back to you as soon as possible." />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_contact_error">Error submitting message</label></th>
+      <td>
+        <input type="text" id="tr_contact_error" name="tr_contact_error" value="Oops, sorry. We were unable to submit your inquiry. Please correct the following and submit again:" />
+      </td>
+    </tr>    
+     <tr>
+      <th><label for="tr_contact_submit">Submit contact form</label></th>
+      <td>
+        <input type="text" id="tr_contact_submit" name="tr_contact_submit" value="Send" />
+      </td>
+    </tr>   
+    <tr>
+      <td colspan="2"><h3>Accounts</h3></td>
+    </tr>
+    <tr>
+      <th><label for="tr_account_details">Account details</label></th>
+      <td>
+        <input type="text" id="tr_account_details" name="tr_account_details" value="Account details" />
+      </td>
+    </tr>    
+     <tr>
+      <th><label for="tr_account_orders">Order history</label></th>
+      <td>
+        <input type="text" id="tr_account_orders" name="tr_account_orders" value="Orders" />
+      </td>
+    </tr> 
+    <tr>
+      <th><label for="tr_account_no_orders">No orders</label></th>
+      <td>
+        <input type="text" id="tr_account_no_orders" name="tr_account_no_orders" value="You haven't placed any orders yet." />
+      </td>
+    </tr> 
+    <tr>
+      <th><label for="tr_account_activate">Activate account</label></th>
+      <td>
+        <input type="text" id="tr_account_activate" name="tr_account_activate" value="Activate account" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_account_login">Customer login</label></th>
+      <td>
+        <input type="text" id="tr_account_login" name="tr_account_login" value="Customer login" />
+      </td>
+    </tr>
+     <tr>
+      <th><label for="tr_guest_login">Guest login</label></th>
+      <td>
+        <input type="text" id="tr_guest_login" name="tr_guest_login" value="Guest login" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_account_reset">Reset account password</label></th>
+      <td>
+        <input type="text" id="tr_account_reset" name="tr_account_reset" value="Reset account password" />
+      </td>
+    </tr>
+     <tr>
+      <td colspan="2"><h3>404 Page</h3></td>
+    </tr>
+    <tr>
+      <th><label for="tr_page_missing">This Page Is Missing</label></th>
+      <td>
+        <input type="text" id="tr_page_missing" name="tr_page_missing" value="This Page Is Missing" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tr_page_not_found">Page not found!</label></th>
+      <td>
+        <input type="text" id="tr_page_not_found" name="tr_page_not_found" value="Page not found!" />
+      </td>
+    </tr>
+  </table>
+
+</fieldset>
+<fieldset>
+  <legend>Footer</legend>
+  <table>
+    <tr>
+      <th><label for="secondary_linklist">Footer menu</label></th>
+      <td><select name="secondary_linklist" class="linklist" /></td>
+    </tr>
+    <tr>
+      <th><label for="footer_linklist">Footer linklist</label></th>
+      <td>
+      	<select name="footer_linklist" class="linklist" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="payment_methods">Payment methods:</label></th>
+      <td>
+        <input type="checkbox" id="accept_visa" name="accept_visa" value="0" checked="checked" /> Visa
+        <input type="checkbox" id="accept_mastercard" name="accept_mastercard" value="0" checked="checked" /> Mastercard
+        <input type="checkbox" id="accept_amex" name="accept_amex" value="0" /> American Express
+        <input type="checkbox" id="accept_cirrus" name="accept_cirrus" value="0" /> Cirrus
+        <input type="checkbox" id="accept_delta" name="accept_delta" value="0" /> Delta
+        <input type="checkbox" id="accept_discover" name="accept_discover" value="0" /> Discover
+        <input type="checkbox" id="accept_westernunion" name="accept_westernunion" value="0" /> Western Union
+        <input type="checkbox" id="accept_paypal" name="accept_paypal" value="0" /> PayPal
+      </td>
+    </tr>
+    <tr>
+        <th><label for="show_lucid_design_credits">Show Lucid Design theme credits</label></th>
+        <td><input type="checkbox" id="show_lucid_design_credits" name="show_lucid_design_credits" value="1" /> Yes</td>
+    </tr>
+		<tr>
+        <th><label for="shopify_partner_id">Shopify partner ID</label></th>
+        <td><input type="text" id="shopify_partner_id" name="shopify_partner_id" value="lucid-design" /></td>
+    </tr>
+  </table> 
+  <h3>Colours</h3> 
+  <table>
+    <tr>
+      <th><label for="footer_background_color">Footer background</label></th>
+      <td><input id="footer_background_color" name="footer_background_color" class="color" value="#f9f9f9"/></td>
+    </tr>
+    <tr>
+      <th><label for="footer_text_color">Footer text color</label></th>
+      <td><input id="footer_text_color" name="footer_text_color" class="color" value="#999999"/></td>
+    </tr>
+    <tr>
+      <th><label for="footer_link_color">Footer link color</label></th>
+      <td><input id="footer_link_color" name="footer_link_color" class="color" value="#666666"/></td>
+    </tr>
+  </table>
+  <h3>Social</h3> 
+  <table>
+    <tr>
+      <th><label for="show_social_links">Display social links?</label></th>
+      <td><input type="checkbox" id="show_social_links" name="show_social_links" checked="checked" /></td>
+    </tr>
+    <tr>
+      <th><label for="facebook_handle">Facebook Handle</label></th>
+      <td>
+        <input type="text" id="facebook_handle" name="facebook_handle" value="luciddesignnz" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="twitter_handle">Twitter Handle</label></th>
+      <td>
+        <input type="text" id="twitter_handle" name="twitter_handle" value="luciddesign" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="pinterest_handle">Pinterest Handle</label></th>
+      <td>
+        <input type="text" id="pinterest_handle" name="pinterest_handle" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="google_handle">Google+ Handle</label></th>
+      <td>
+        <input type="text" id="google_handlee" name="google_handle" value="" />
+      </td>
+    </tr>
+  </table>
+  <h3>Newsletter</h3>
+  <table>
+    <tr>
+      <th><label for="newsletter_enabled">Newsletter sign up form</label></th>
+      <td>
+        <input type="checkbox" id="newsletter_enabled" name="newsletter_enabled" checked="checked" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="newsletter_system">Newsletter system</label></th>
+      <td>
+        <input type="radio" name="newsletter_system" value="shopify" checked="checked" /> Shopify
+        <input type="radio" name="newsletter_system" value="mailchimp" /> <a href="http://mailchimp.com/">MailChimp</a>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="mailchimp_link">MailChimp form action URL</label></th>
+      <td>
+        <input type="text" id="mailchimp_link" name="mailchimp_link" value="" />
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Advanced</legend>
+  <table>
+    <tr>
+      <th><label for="additional_header">Additional header scripts and meta tags (included before &#60;/head&#62;)</label></th>
+      <td>
+        <textarea id="additional_header" name="additional_header" cols="60" rows="5"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="additional_footer">Additional footer scripts (included before &#60;/body&#62;)</label></th>
+      <td>
+        <textarea id="additional_footer" name="additional_footer" cols="60" rows="5"></textarea>
+      </td>
+    </tr>  
+   </table>
+</fieldset>

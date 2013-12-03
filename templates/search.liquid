@@ -1,0 +1,42 @@
+   <div id="search-results">
+    <div class="search">
+				<form name="productSearchForm" action="/search" class="full-pad input-append">
+					<input type="text" name="q" class="replace product_search" title="Search" placeholder="{{ settings.tr_search }}..." />
+					<button type="submit" class="submit btn alternate go_search">{{ settings.tr_search }}</button>
+				</form>
+   </div>
+  {% if search.performed %}
+    
+    {% paginate search.results by 10 %}  
+  
+    {% if search.results == empty %}  
+      <p class="alert alert-info full-margin top-border">{{ settings.tr_no_search_results }}</p>              
+    {% else %}  
+    <h1 class="side-margin">{{ settings.tr_search_results }}</h1>
+       
+        {% for item in search.results %}      
+        <div class="search-item btm-border {% if forloop.first %}top-border{% endif %} full-margin">
+          {% if item.featured_image %}
+           <div class="row-fluid">
+                <div class="span4"><a href="{{item.url}}" title="">{{ item.featured_image | product_img_url: 'compact' | img_tag }}</a></div>
+                <div class="span8"><h3>{{ item.title | link_to: item.url }}</h3>{{ item.content | strip_html | truncatewords: 40 | highlight: search.terms }}</div>
+          </div>
+          {% else %}
+                <h3>{{ item.title | link_to: item.url }}</h3>
+               {{ item.content | strip_html | truncatewords: 40 | highlight: search.terms }}
+          {% endif %}
+          
+        </div>
+        {% endfor %}
+            
+
+    {% endif %}
+    
+    
+    {% include 'pagination' %}
+    
+    {% endpaginate %}    
+  {% else %}
+   <p class="alert alert-info full-margin top-border">{{ settings.tr_empty_search }}</p>  
+  {% endif %}
+  </div>

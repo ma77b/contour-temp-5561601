@@ -1,0 +1,16 @@
+{% if settings.products_per_row == "2" %}{% cycle '<div class="row-fluid">', '' %}{% endif %}
+<div class="product clearfix {% if settings.products_per_row == "2" %}span6{% endif %}">
+	<a href="{{ product.url | within: collection }}" class="rel bl">
+		<div class="hidePrice">
+			{% if product.compare_at_price > product.price %}<span class="abs sale">{{ settings.tr_sale_banner }}</span>{% endif %}
+		</div>
+		<img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
+	</a>
+	<div class="product-info full-margin btm-border clearfix">
+		<p {% unless settings.products_per_row == "2" %}class="pull-left"{% endunless %}><a href="{{ product.url | within: collection }}"><strong>{{ product.title }}</strong></a></p>
+		<div class="hidePrice">
+			<p class="price {% unless settings.products_per_row == "2" %}pull-right{% endunless %}"><em>{% if product.price_varies %}{{ settings.tr_starting_from }}&nbsp;{% endif %}{{ product.price_min | money }}{% if product.compare_at_price > product.price %} <del>{{ settings.tr_was }}&nbsp;{{ product.compare_at_price | money }}</del>{% endif %}</em></p>
+		</div>
+	</div>
+</div>
+{% if settings.products_per_row == "2" %}{% if forloop.last %}</div>{% else %}{% cycle '', '</div>' %}{% endif %}{% endif %}

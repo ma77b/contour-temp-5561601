@@ -1,0 +1,21 @@
+<div id="collections">
+	<h1 class="side-pad">Collections</h1>
+	{% if collections.size == 0 %}
+		<p class="alert alert-info side-margin">This are no collections.</p>
+	{% else %}
+		{% for collection in collections %}
+		{% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+		<div class="col-thumb collection"> 
+			<h2><a href="{{ collection.url }}" title="Browse our {{ collection_title }} collection">{{ collection.title }}</a></h2>
+			<a href="{{ collection.url }}" title="Browse our {{ collection_title }} collection">
+				{% if collection.image %}
+				{{ collection.image.src | collection_img_url: 'large' | img_tag: collection_title }}
+				{% else %}
+				{{collection.products.first.featured_image | product_img_url: 'large' | img_tag: collection_title }}
+				{% endif %}
+			</a>
+		</div>
+		{% endfor %}
+	{% endif %}
+</div>
+

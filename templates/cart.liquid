@@ -1,0 +1,52 @@
+<div id="cart">
+{% if cart.item_count == 0 %}
+	<p class="alert alert-info side-margin">{{ settings.tr_cart_empty }}</p>
+{% else %}
+<h1 class="side-margin">{{ settings.tr_cart_summary }}</h1>
+	<form action="/cart" method="post" id="cartform" class="form-horizontal">
+		<table class="table">
+			<tr>
+				<th>{{ settings.tr_cart_item }}</th>
+				<th>{{ settings.tr_price }}</th>
+				<th>{{ settings.tr_quantity }}</th>
+				<th>&nbsp;</th>
+			</tr>
+			{% for item in cart.items %}
+			<tr>
+				<td class="description">
+    				<p><a href="{{ item.product.url }}">{{ item.product.title }}</a> <small>{% if item.variant.title != 'Default Title' %}{{ item.variant.title }}{% endif %}</small></p>
+				</td>
+				<td class="price">{{ item.price | money | replace: ' ','&nbsp;' }}{% if item.product.compare_at_price > item.product.price %}<br /><s>{{ item.product.compare_at_price | money | replace: ' ','&nbsp;' }}</s> <span class="{{ settings.sale_icon }}">{{ settings.sale_text }}</span>{% endif %}</td>
+				<td class="quantity"><input type="number" class="span1" name="updates[{{item.variant.id}}]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();"/></td>
+				<td class="delete"><a href="/cart/change/{{ item.variant.id }}?quantity=0" class="close">&times;</a></td>
+			</tr>
+			{% endfor %}
+		</table>
+		<table class="table">
+            <tr>
+				<td><h3 class="center">{{ settings.tr_subtotal }} {{ cart.total_price | money | replace: ' ','&nbsp;' }}</h3></td>
+			</tr>
+		</table>
+		<div class="form-actions">
+			<div class="note-wrap">
+            	<p><a href="#collapseOne" data-toggle="collapse" class="accordion-toggle btn btn-small alternate"><i class="icon-pencil"></i>{{ settings.tr_add_note }}</a></p>
+					<div class="collapse" id="collapseOne" style="height: 0px;">    
+						<textarea name="note" id="note" rows="5">{{ cart.note }}</textarea>  
+					</div>
+            </div>
+			<div class="btn-group">
+				<button type="submit" class="btn-large btn alternate" name="update">{{ settings.tr_cart_update }}</button>
+				<button class="btn-large btn" name="checkout" type="submit">{{ settings.tr_proceed_to_checkout }}</button>            
+		       	{% if settings.display_extra_checkout_buttons %}
+                	{% if additional_checkout_buttons %}
+                	<div class="additional-checkout-buttons">
+                    	<p>- or -</p>
+                    	{{ content_for_additional_checkout_buttons }}
+                    </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+	</form>
+{% endif %}
+</div>
