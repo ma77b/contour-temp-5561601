@@ -69,7 +69,6 @@
 	</div>
 	{% endif %}
 	{% unless settings.frontpage_collection == "" %}
-	<h2>{{ settings.tr_featured_products }}</h2> 
 	<div id="products" class="products clearfix">
 		{% for product in collections[settings.frontpage_collection].products | limit: 8 %}
 		{% include 'product-loop' %}
