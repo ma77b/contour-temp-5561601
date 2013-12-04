@@ -78,7 +78,7 @@
 
 <script>
 jQuery.getJSON('http://freegeoip.net/json/?callback=?', function(location) {
-  if( location.country_code != "US"){
+  if( location.country_code != "country_code"){
     $('.hidePrice').hide();
   }
 });
@@ -99,10 +99,11 @@ jQuery.getJSON('http://freegeoip.net/json/?callback=?', function(location) {
 		<!-- TOP NAV -->
 		<div id="toolbar">
 			<a href="#search" class="icon icon-search accordion-toggle" data-toggle="collapse" data-parent="#toolbar">&nbsp;</a>
-			{% unless settings.toolbar_phone == "" %}<a href="#phone" class="icon icon-phone accordion-toggle" data-toggle="collapse" data-parent="#toolbar">&nbsp;</a>{% endunless %}
+			<span class="hidePrice">
+			{% unless settings.toolbar_phone == "" %}
+			<a href="#phone" class="icon icon-phone accordion-toggle" data-toggle="collapse" data-parent="#toolbar">&nbsp;</a>{% endunless %}
 			{% unless settings.toolbar_email == "" %}<a href="#email" class="icon icon-envelope accordion-toggle" data-toggle="collapse" data-parent="#toolbar">&nbsp;</a>{% endunless %}
 			{% if shop.customer_accounts_enabled %}<a href="/account" class="icon icon-user">&nbsp;</a>{% endif %}
-			<span class="hidePrice">
 				<a href="/cart" class="icon icon-shopping-cart">&nbsp;</a><a href="/cart" class="cart-total-items"><span class="badge">{{ cart.item_count }}</span></a>
 			</span>
 			{% if settings.main_navigation_style == "toolbar" %}
